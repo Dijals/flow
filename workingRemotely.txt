@@ -1,0 +1,75 @@
+# To clone a URL 
+git clone https://github.com/Dijals/flow.git
+
+# to look at a condence version of git log
+git log --oneline # you can also count the commit using oneline
+git log --oneline | wc -l
+git log --oneline --graph
+# all: allows us to visualise all branches instead of just one 
+# decorate: applys any lables to the commit such as HEAD, tags, remote and local branches
+git log --oneline --graph --all --decorate
+# we can add this as an alias in our git config 
+# lga: log graph all 
+git config --globle alias.lga "log --oneline --graph --all --decorate"
+
+
+
+# to get the Authors and commit messages only 
+git shortlog
+# s: summery 
+# n: numerically by number of commits decreasing 
+# e: include email addresses   
+git shortlog -snem
+
+# to look at the last commit made
+git show HEAD
+git show ff03d
+
+# shows the origin of the repo
+git remote -v
+
+
+# to add a remote to a new repo
+git remote add origin https://github.com/Dijas/code.git
+
+# to fetch any changes from that repo
+git fetch
+# if you have multiple remotes I can specify which one to fetch
+gir fetch origin 
+
+
+# display branches 
+## branches are used for temp working copy 
+## or to seperate main line development with bug fixes
+git branch 
+# display remote branches 
+git branch -r 
+
+# to look at tags 
+## these are known points where you can tag versions 
+git tag
+
+# to pull updates in the github repo 
+git fetch
+git merge origin/master ## or
+
+git pull 
+
+# to look at changes origin/master made 
+git log origin/master
+
+
+# to remove the origin  
+git remove rm origin
+# and readd it as the ssh version
+git remote add origin git@github.com:Dijals/flow.git
+
+# to make a new version 
+git tag v1.0
+# this is a tag with a message
+git tag v1.0_with_message -m "this is version 1.0" 
+# this is an signed tag
+git tag -s v1.0_signed
+
+# to push tags to github
+git push --tags

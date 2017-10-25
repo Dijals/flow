@@ -1,0 +1,70 @@
+# Creating a new branch 
+git branch feature1
+
+# Switching to the branch 
+# i will now have master and feature1 branch
+# branches are lables on the SHA1 hashs of indivisule commit 
+# the difference between branches and tags is that branches will 
+# follow the commits as you add additional commits on that branch 
+# the branch will move along 
+# tags will always stay on the same commit
+git checkout feature1
+
+# Create a branch in different version by it SHA1 hash
+git branch fix1 5f94e2c
+
+# changing the readme text in the fix1 beach
+git checkout fix1
+echo "fixing bug#1234" >> README.txt
+
+#we really wanna call fix1 branch bug 1234 
+# m: move option 
+git brach -m fix1 bug1234
+
+# to delete a branch 
+git branch -d bug1234 #	this is not allowed untill its merged into master but 							usin the caps D you can remove it
+
+
+# creating a new branch called feature2 
+# b : create the branch if it doesn't exist
+git checkout -b feature2
+
+# to get back a deleted branch
+git reflog # this will allow you to look back at your previous logs
+# get the SAH1 has of the deleted branch and type
+# deleted branch will be removed after 30 days 
+git branch bug123 f49b03f
+git checkout bug123
+git show HEAD	
+
+# if a change is not ready to be commited you can stash it 
+git stash 
+git stash list 
+
+# and to pull it back but keep the stash 
+git stash apply 
+# to remove the stash and apply the changes
+git stash pop
+
+# to tosh out the changes before adding 
+git reset --hard HEAD
+
+# you can also stash it into a new branch 
+git stash branch feature2_additional 
+# this command will create the new branch and check it out and pop the stash of the list
+
+# stash is usefull for temp holding area that are not ready to commit 
+# to a branch and dont want to lose 
+
+# to delete a branch first i merged it with the master 
+git merge feature1
+git branch -d feature1
+
+#adds the two lines
+git diff --cached
+
+ git rebase --continue
+ git rebase master
+
+
+git config --global merge.tool bcompare #bc

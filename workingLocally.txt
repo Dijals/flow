@@ -1,0 +1,52 @@
+# create a Repo 
+git init
+
+# create a Readme file 
+echo "hello git" > README.txt
+
+# to check the status
+git status
+
+# to add to the repo 
+git add README.txt
+
+# to commit the file 
+git commit -m "added a readme file"
+
+# to check the history 
+git  log
+
+# for all modified file 
+git add -u
+
+# to fine the difference between the two changed files 
+git diff e3cfef..006ffe # or 
+git diff HEAD~1..HEAD
+
+# Add all files including untracked ones 
+git add -A
+
+# if you delete from a text file and want to go back 
+# before commiting it 
+git checkout README.txt
+or 
+git reset --hard
+
+# to go back from a commit to a new version to old
+# all the changes i have made will be moved back to
+# the staging area
+git reset --soft HEAD~1
+
+# to go back from a commit to a new version to old
+# and delete all changes made 
+git reset --hard HEAD~1
+
+# remove files i just added 
+git clean -n # first shows what i will be removing 
+git clean -f # this will remove the file 
+
+# to ignore a file 
+# first create a hidden git ignore file 
+subl .gitignore # add a dir you want to ignore in the file (e.g. /log)
+git add .gitignore
+git commit -m "added a git ignore file"
